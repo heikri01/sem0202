@@ -20,7 +20,7 @@
     padding: 1rem;
 
     i {
-      font-size: 20px;
+      font-size: 30px;
     }
 
     h2 {
@@ -55,6 +55,7 @@
 
       color: variables.$link-color;
       font-weight: bold;
+      font-family: variables.$overskrift-font;
       text-decoration: none;
     }
   }
