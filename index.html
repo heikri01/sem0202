@@ -7,17 +7,25 @@
     <script src="https://kit.fontawesome.com/72df3123e5.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-<div>
+<div class="container">
     <header>
         <nav>
             <a href="#"><img src="img/cybersikker.svg" alt="logo for cybersikker"></a>
-            <ul>
-                <a href=""><li>Forside</li></a>
-                <a href=""><li>Blog</li></a>
-                <a href=""><li>FAQ</li></a>
-                <a href=""><li>Kontakt</li></a>
+            <button id="bars" aria-expanded="false" aria-controls="menu" aria-label="åben navigation"><i class="fa-solid fa-bars"></i>
+          </button>
+            <ul id="menu">
+                <li><a class="active" href="#">Forside</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Kontakt</a></li>
             </ul>
         </nav>
     </header>
