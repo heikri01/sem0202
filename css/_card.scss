@@ -1,0 +1,61 @@
+@use "variables";
+
+.card {
+  border-radius: 15px;
+  overflow: hidden;
+  background: variables.$secondary-color;
+
+  display: flex;
+  flex-direction: column;
+
+  /* TOP BAR */
+  .card-top {
+    background: variables.$secondary-color;
+    color: variables.$primary-color;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 1rem;
+
+    i {
+      font-size: 20px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .undertitel {
+      margin: 0;
+      font-size: 12px;
+      opacity: 0.8;
+    }
+  }
+
+  /* BODY */
+  .card-body {
+    background: variables.$sec-bg-color;
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    a {
+      margin-top: auto; // 🔥 skubber link ned
+      align-self: flex-end;
+
+      color: variables.$link-color;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  }
+}
