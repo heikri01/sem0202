@@ -4,11 +4,10 @@ console.log(main);
 const btn = document.querySelector("#startBtn");
 
 const scenarier = [
-
   {
     tekst: "chatbot siger",
 
-    ikon: "⚠️",
+    ikon: "fa-solid fa-robot",
 
     svar: [
       "svar 1",
@@ -16,36 +15,64 @@ const scenarier = [
       "svar 3"
     ]
   }
-
 ]
+let index = 0; 
 
+const currentScenario = scenarier[index];
 
-function visPopup(titel, tekst) {
+function visPopup(scenarie) {
   const chatbot = document.querySelector(".chatbot");
 
   chatbot.classList.add("open");
-
   chatbot.innerHTML = "";
-  
-  const h2 = document.createElement("h2");
-    h2.textContent = titel;
+ 
+const overlay = document.querySelector(".overlay");
+  overlay.classList.add("open");
 
-  const p = document.createElement("p");
-    p.textContent = tekst;
-  
-  const lukBtn = document.createElement("button");
+  const topBar = document.createElement("div");
+    topBar.classList.add("topbar");
+
+  const restartBtn = document.createElement("button");
+    restartBtn.textContent = "Start forfra";
+    restartBtn.classList.add("restart-btn");
+
+   const lukBtn = document.createElement("button");
     lukBtn.textContent = "Luk";
-
+    lukBtn.classList.add("luk-btn");
     lukBtn.addEventListener("click", () => {
     chatbot.classList.remove("open");
-});
+    overlay.classList.remove("open");
+   });
   
-  chatbot.append(h2);
-  chatbot.append(p);
-  chatbot.append(lukBtn);
+    topBar.append(restartBtn);
+    topBar.append(lukBtn);
+  
+  const p = document.createElement("p");
+    p.textContent = scenarie.tekst;
+    p.classList.add("dialog");
+
+  const ikon = document.createElement("div");
+    ikon.innerHTML = `<i class="${scenarie.ikon}"></i>`;
+    ikon.classList.add("bot-ikon");
+ 
+  const svarContainer = document.createElement("div");
+      svarContainer.classList.add("svar-container");
+          
+  scenarie.svar.forEach((svarTekst) => {
+    
+    const svarBtn = document.createElement("button");
+      svarBtn.textContent = svarTekst;
+      svarBtn.classList.add("svar-btn");
+      svarContainer.append(svarBtn);
+       
+  });
+      chatbot.append(topBar);
+      chatbot.append(p);
+      chatbot.append(ikon);
+      chatbot.append(svarContainer);
 }
 
 btn.addEventListener("click", () => {
   console.log("der blev klikket");
-  visPopup("Hej!", "Nu virker det 🎉");
+  visPopup(currentScenario);
 });

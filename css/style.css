@@ -52,17 +52,84 @@
 .chatbot {
   display: none;
   position: fixed;
-  bottom: 2rem;
+  bottom: 5rem;
   right: 2rem;
   width: 70%;
-  background: #090142;
-  color: white;
+  z-index: 1000;
+  background: white;
+  color: #090142;
   padding: 2rem;
   border-radius: 25px;
-  border: 2px solid white;
+  border: 1px solid #090142;
 }
 
 .chatbot.open {
+  display: block;
+}
+
+.svar-btn {
+  background: #D9E6F0;
+  border: 2px solid rgba(9, 1, 66, 0.4);
+  color: #090142;
+  border-radius: 25px;
+  padding: 10px 20px;
+}
+
+.luk-btn {
+  background: transparent;
+  border: none;
+  color: #99B8D2;
+  font-family: amaranth;
+  cursor: pointer;
+}
+
+.svar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  align-items: flex-start;
+}
+
+.dialog {
+  background: #99B8D2;
+  border: 2px solid #090142;
+  border-radius: 25px 25px 0 25px;
+  padding: 20px;
+  margin-right: 65px;
+}
+
+.bot-ikon {
+  font-size: 50px;
+  color: #090142;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.restart-btn {
+  background: transparent;
+  border: none;
+  color: #99B8D2;
+  font-family: amaranth;
+  cursor: pointer;
+}
+
+.topbar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
+  z-index: 998;
+}
+
+.overlay.open {
   display: block;
 }
 

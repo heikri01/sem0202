@@ -3,18 +3,85 @@
 .chatbot {
   display: none;
   position: fixed;
-  bottom: 2rem;
+  bottom: 5rem;
   right: 2rem;
   width: 70%;
+  z-index: 1000;
 
-  background: variables.$primary-color;
-  color: white;
+  background: white;
+  color: variables.$primary-color;
 
   padding: 2rem;
   border-radius: 25px;
-  border: 2px solid white;
+  border: 1px solid variables.$primary-color;
 }
 
 .chatbot.open {
+  display: block;
+}
+
+.svar-btn {
+  background: variables.$sec-bg-color; 
+  border: 2px solid rgba(variables.$primary-color, 0.4);
+  color: variables.$primary-color;
+  border-radius: 25px;
+  padding: 10px 20px;
+}
+
+.luk-btn {
+    background: transparent;
+    border: none;
+    color: variables.$secondary-color;
+    font-family: variables.$overskrift-font;
+    cursor: pointer;
+}
+
+.svar-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    align-items: flex-start;
+}
+
+.dialog {
+    background: variables.$secondary-color;
+    border: 2px solid variables.$primary-color;
+    border-radius: 25px 25px 0 25px;
+    padding: 20px;
+    margin-right: 65px;
+}
+
+.bot-ikon {
+    font-size: 50px;
+    color: variables.$primary-color;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.restart-btn {
+    background: transparent;
+    border: none;
+    color: variables.$secondary-color;
+    font-family: variables.$overskrift-font;
+    cursor: pointer;
+}
+
+.topbar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
+  z-index: 998;
+}
+
+.overlay.open {
   display: block;
 }
