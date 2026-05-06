@@ -17,6 +17,8 @@ const scenarier = [
   }
 ]
 let index = 0; 
+let firstElement;
+let lastElement;
 
 const currentScenario = scenarier[index];
 
@@ -26,7 +28,7 @@ function visPopup(scenarie) {
   chatbot.classList.add("open");
   chatbot.innerHTML = "";
  
-const overlay = document.querySelector(".overlay");
+  const overlay = document.querySelector(".overlay");
   overlay.classList.add("open");
 
   const topBar = document.createElement("div");
@@ -42,6 +44,7 @@ const overlay = document.querySelector(".overlay");
     lukBtn.addEventListener("click", () => {
     chatbot.classList.remove("open");
     overlay.classList.remove("open");
+    btn.focus();
    });
   
     topBar.append(restartBtn);
@@ -66,11 +69,40 @@ const overlay = document.querySelector(".overlay");
       svarContainer.append(svarBtn);
        
   });
-      chatbot.append(topBar);
-      chatbot.append(p);
-      chatbot.append(ikon);
-      chatbot.append(svarContainer);
+  chatbot.append(topBar);
+  chatbot.append(p);
+  chatbot.append(ikon);
+  chatbot.append(svarContainer);
+
+  const focusable = chatbot.querySelectorAll("button"); 
+  firstElement = focusable[0];
+  lastElement = focusable[focusable.length - 1];
+  firstElement.focus();
 }
+
+document.addEventListener("keydown", (e) => {
+  const chatbot = document.querySelector(".chatbot");
+  const overlay = document.querySelector(".overlay");
+  if (!chatbot.classList.contains("open")) return;
+
+  if (e.key === "Tab" && e.shiftKey) {
+    if (document.activeElement === firstElement) {
+      e.preventDefault();
+      lastElement.focus();
+    }
+  }
+  else if (e.key === "Tab") {
+    if (document.activeElement === lastElement) {
+    e.preventDefault();
+    firstElement.focus();
+    }
+  }
+  if (e.key === "Escape") {
+    chatbot.classList.remove("open");
+    overlay.classList.remove("open");
+    btn.focus();
+  }
+});
 
 btn.addEventListener("click", () => {
   console.log("der blev klikket");
