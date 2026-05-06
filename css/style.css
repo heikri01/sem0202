@@ -97,6 +97,7 @@
   border-radius: 25px 25px 0 25px;
   padding: 20px;
   margin-right: 65px;
+  white-space: pre-line;
 }
 
 .bot-ikon {
