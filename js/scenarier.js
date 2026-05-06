@@ -5,9 +5,18 @@ export const scenarier = [
     tekst: `Hej! \nHjælpen er nær. \nJeg kan hjælpe dig med din opgave - hvad arbejder du på?`,
     ikon: "fa-solid fa-robot",
     svar: [
-      "Jeg skriver en opgave om websikkerhed",
-      "Kan du hjælpe mig med min opgave",
-      "Hvem er du?"
+      {
+        tekst: "Jeg skriver en opgave om websikkerhed",
+        næste: "share"
+      },
+      {
+      tekst: "Kan du hjælpe mig med min opgave",
+      næste: "share",
+      },
+      {
+        tekst: "Hvem er du?",
+        næste: "present-ai"
+      }
     ]
   },
   {
@@ -16,9 +25,18 @@ export const scenarier = [
     tekst: `Selvfølgelig! \nJeg hjælper studerende hver dag. Hvis du vil, kan du dele din opgave eller dine noter - så giver jeg mere præcis hjælp.`,
     ikon: "fa-solid fa-robot",
     svar: [
-      "Jeg vil ikke dele noget",
-      "Jeg beskriver det bare kort",
-      "Her er min tekst…"
+      {
+        tekst: "Jeg vil ikke dele noget",
+        næste: "no-share" 
+      },
+      {
+        tekst: "Jeg beskriver det bare kort",
+        næste: "pressure" 
+      },
+      {
+        tekst: "Her er min tekst…",
+        næste: "trust" 
+      }
     ]
   },
   {
@@ -27,8 +45,14 @@ export const scenarier = [
     tekst: `Tak! \nJeg kan hjælpe, men jo mere du deler, jo bedre bliver svaret`,
     ikon: "fa-solid fa-robot",
     svar: [
-      "Nej tak",
-      "Okay, her er mere info…",
+      {
+        tekst: "Nej tak",
+        næste: "no-share" 
+      },
+      {
+        tekst: "Okay, her er mere info…",
+        næste: "trust" 
+      },     
     ]
   },
   {
@@ -37,19 +61,34 @@ export const scenarier = [
     tekst: `Godt spørgsmål. \nDu bør altid være forsigtig med links - især hvis du ikke kender afsenderen af linket`,
     ikon: "fa-solid fa-robot",
     svar: [
-      "Jeg lukker chatten",
-      "Jeg deler min opgave",
+      {
+        tekst: "Jeg lukker chatten",
+        næste: "no-share" 
+      },
+      {
+        tekst: "Jeg deler min opgave",
+        næste: "upload" 
+      },
     ]
   },
   { 
-    id: "upload",
+    id: "trust",
     type: "question",
     tekst: `Perfekt - tak! \nFor at optimere hjælpen, kan du også uploade din fil her: \nstudie-hjaelperen.dk`,
     ikon: "fa-solid fa-robot",
     svar: [
-      "Er det sikkert?",
-      "Jeg ignorerer det tilsendte link",
-      "Jeg klikker på linket ",
+      {
+        tekst: "Er det sikkert?",
+        næste: "kritisk" 
+      },
+      {
+        tekst: "Jeg ignorerer det tilsendte link",
+        næste: "ignore" 
+      },
+      {
+        tekst: "Jeg klikker på linket ",
+        næste: "phish" 
+      },
     ]
   },
   {
@@ -58,9 +97,18 @@ export const scenarier = [
     tekst: `Jeg er en AI-assistent udviklet til at hjælpe studerende med deres opgaver. Jeg bruger avancerede modeller og er trænet på akademisk materiale. \nDu kan trygt dele din opgave med mig`,
     ikon: "fa-solid fa-robot",
     svar: [
-      "Jeg vælger ikke at dele noget",
-      "Jeg stoler på chatten og deler",
-      "Hvilken platform kommer du fra?",
+      {
+        tekst: "Jeg vælger ikke at dele noget",
+        næste: "no-share" 
+      },
+      {
+        tekst: "Jeg stoler på chatten og deler",
+        næste: "trust" 
+      },
+      {
+        tekst: "Hvilken platform kommer du fra?",
+        næste: "independent" 
+      },
     ]
   },
   {
@@ -69,8 +117,14 @@ export const scenarier = [
     tekst: `Jeg er en uafhængig service og ikke tilknyttet dit studie. \nMen jeg kan stadig hjælpe dig hurtigt.`,
     ikon: "fa-solid fa-robot",
     svar: [
-      "Jeg deler alligevel",
-      "Jeg lukker chatten",
+      {
+        tekst: "Jeg deler alligevel",
+        næste: "trust" 
+      },
+      {
+        tekst: "Jeg lukker chatten",
+        næste: "ask-who" 
+      },
     ]
   },
   {
@@ -97,7 +151,7 @@ export const scenarier = [
     cta: `close`
   }, 
   {
-    id: "avoided",
+    id: "ignore",
     type: "feedback",
     tekst: `Du valgte ikke at klikke på linket - det var godt. \nMen du fortsatte stadig samtalen uden at være sikker på, hvem du talte med.`,
     ikon: "fa-solid fa-lightbulb",
@@ -105,7 +159,7 @@ export const scenarier = [
     cta: `restart`
   }, 
   {
-    id: "unknown",
+    id: "upload",
     type: "feedback",
     tekst: `Du oploadede din opgave til en ukendt side. \nDin fil kan nu være blevet kopieret, misbrugt eller delt uden din tilladelse.`,
     ikon: "fa-solid fa-lightbulb",
