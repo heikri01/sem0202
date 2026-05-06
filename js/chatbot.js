@@ -3,6 +3,23 @@ console.log(main);
 
 const btn = document.querySelector("#startBtn");
 
+const scenarier = [
+
+  {
+    tekst: "chatbot siger",
+
+    ikon: "⚠️",
+
+    svar: [
+      "svar 1",
+      "svar 2",
+      "svar 3"
+    ]
+  }
+
+]
+
+
 function visPopup(titel, tekst) {
   const chatbot = document.querySelector(".chatbot");
 
