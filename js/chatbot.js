@@ -2,10 +2,11 @@ import { scenarier } from "./scenarier.js"; //henter listen med alle scenarier f
 const main = document.querySelector("main"); //finder main elementet i html
 console.log(main);
 
-const btn = document.querySelector("#startBtn");
+const openBtns = document.querySelectorAll(".open-chatbot");
 
 let firstElement; //globale variabler - skal kunne bruges af alle funktioner
 let lastElement; //globale variabler
+let activeTrigger; //gemmer det element der åbnede popup'en
 
 //start scenariet ->
 const startScenarie = scenarier.find(
@@ -35,7 +36,9 @@ function visPopup(scenarie) {
     lukBtn.addEventListener("click", () => {
       chatbot.classList.remove("open"); //når der klikkes på knappen luk, fjerner klassen "open" fra chatbotten
       overlay.classList.remove("open"); //når der klikkes på knappen luk, fjernes klassen open fra klassen overlay
-      btn.focus();
+      if (activeTrigger) {
+        activeTrigger.focus();
+      }
    } 
   );//EventListener til lukBtn slutter her
   
@@ -83,10 +86,10 @@ function visPopup(scenarie) {
     chatbot.append(svarContainer);
   }
   //lokaliserer alle knapperne inde i chatbotten
-  const focusable = chatbot.querySelectorAll("button"); 
-  firstElement = focusable[0];
-  lastElement = focusable[focusable.length - 1];
-  firstElement.focus();
+  const focusable = chatbot.querySelectorAll("button"); //finder alle knapper inde i chatbotten
+  firstElement = focusable[0]; //gemmer første ->
+  lastElement = focusable[focusable.length - 1]; // -> og sidste fokusbare element
+  firstElement.focus(); //sætter tastatur-fokus på første knap i popup'en
 }//indholdet i funktionen afsluttes her
 
 //EventListener der lytter efter tastatur-input på hele siden
@@ -112,12 +115,21 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     chatbot.classList.remove("open");
     overlay.classList.remove("open");
-    btn.focus();
+    activeTrigger.focus();
+    if (activeTrigger) {
+    activeTrigger.focus();
+    }
   }
 });
 
 //EventListener lytter efter klik på start-knappen
-btn.addEventListener("click", () => {
+openBtns.forEach((btn) => {
+
+btn.addEventListener("click", (e) => {
+  e.preventDefault();
+  activeTrigger = btn;
   console.log("der blev klikket");
   visPopup(startScenarie);
+});
+
 });
