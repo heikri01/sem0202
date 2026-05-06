@@ -49,6 +49,23 @@
   text-decoration: none;
 }
 
+.chatbot {
+  display: none;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 70%;
+  background: #090142;
+  color: white;
+  padding: 2rem;
+  border-radius: 25px;
+  border: 2px solid white;
+}
+
+.chatbot.open {
+  display: block;
+}
+
 body {
   box-sizing: border-box;
   margin: 0;
@@ -185,6 +202,21 @@ footer {
   display: flex;
   justify-content: space-between;
   padding-top: 2em;
+}
+
+.robot {
+  background-image: url(../img/ChatGPT\ Image\ 4.\ maj\ 2026\,\ 13.01.21.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 30vh;
+  padding: 20px;
+  text-align: end;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  border-radius: 25px;
+  margin-top: 20px;
 }
 
 @media screen and (min-width: 800px) {
