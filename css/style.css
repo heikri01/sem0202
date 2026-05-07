@@ -4,6 +4,7 @@
   background: #99B8D2;
   display: flex;
   flex-direction: column;
+  height: 100%;
   /* TOP BAR */
 }
 .card .card-top {
@@ -34,7 +35,8 @@
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  flex: 1;
+  gap: 1rem;
 }
 .card .card-body p {
   margin: 0;
@@ -65,6 +67,7 @@
   max-height: 80vh;
   overflow-y: auto;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: 0.3s ease;
 }
 
 .chatbot.open {
@@ -166,6 +169,7 @@ button {
   margin-left: auto;
   margin-top: 1rem;
   display: block;
+  font-weight: 600;
 }
 
 .feedback-dialog {
@@ -228,7 +232,11 @@ p {
 }
 
 a {
-  color: #F15A24;
+  color: white;
+  transition: 0.2s ease;
+}
+a:hover {
+  transform: translateY(-4px);
 }
 
 .container {
@@ -277,9 +285,14 @@ nav #menu.show {
   display: flex;
 }
 nav a {
+  display: inline-block;
   text-decoration: none;
   font-family: amaranth;
   font-size: 20px;
+  transition: 0.2s ease;
+}
+nav a:hover {
+  transform: translateY(-4px);
 }
 
 button {
@@ -305,7 +318,7 @@ button:focus {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 30vh;
+  min-height: 30vh;
   padding: 20px;
   text-align: end;
   display: flex;
@@ -321,9 +334,22 @@ button:focus {
   border-radius: 25px;
   padding: 10px;
   margin-top: 20px;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.08);
 }
 .info h3 {
   margin-bottom: 10px;
+}
+.info ul {
+  list-style: none;
+  padding: 0;
+}
+.info li i {
+  color: #00DF00;
+  margin-right: 10px;
+}
+
+section {
+  margin-bottom: 5rem;
 }
 
 main {
@@ -381,6 +407,38 @@ footer {
     padding: 0;
     gap: 1em;
   }
+  .container {
+    max-width: 1440px;
+    margin: 0 auto;
+    background: #090142;
+    min-height: 100vh;
+  }
+  body {
+    background: #D9E6F0;
+  }
+  .intro {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
+    margin: 4rem 2rem;
+  }
+  .intro .info {
+    flex: 1;
+  }
+  .kort {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin: 4rem 2rem;
+  }
+  .tips {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin: 4rem 2rem;
+    justify-content: space-around;
+  }
   .svar-btn {
     transition: 0.2s ease;
   }
@@ -390,5 +448,8 @@ footer {
   }
   .cta:hover {
     opacity: 0.7;
+  }
+  .robot {
+    width: 300px;
   }
 }/*# sourceMappingURL=style.css.map */

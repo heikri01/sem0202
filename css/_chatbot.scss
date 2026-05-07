@@ -18,6 +18,7 @@
   max-height: 80vh;
   overflow-y: auto;
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  transition: 0.3s ease;
 }
 
 .chatbot.open {
@@ -119,6 +120,7 @@ button {
     margin-left: auto;
     margin-top: 1rem;
     display: block;
+    font-weight: 600;
 }
 
 .feedback-dialog {

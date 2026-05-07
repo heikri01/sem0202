@@ -7,7 +7,8 @@
 
   display: flex;
   flex-direction: column;
-
+  height: 100%;
+ 
   /* TOP BAR */
   .card-top {
     background: variables.$secondary-color;
@@ -19,20 +20,20 @@
 
     padding: 1rem;
 
-    i {
-      font-size: 30px;
-    }
+      i {
+        font-size: 30px;
+      }
 
-    h2 {
-      margin: 0;
-      font-size: 18px;
-    }
+      h2 {
+        margin: 0;
+        font-size: 18px;
+      }
 
-    .undertitel {
-      margin: 0;
-      font-size: 12px;
-      opacity: 0.8;
-    }
+      .undertitel {
+        margin: 0;
+        font-size: 12px;
+        opacity: 0.8;
+      }
   }
 
   /* BODY */
@@ -42,7 +43,8 @@
 
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    flex: 1;
+    gap: 1rem;
 
     p {
       margin: 0;

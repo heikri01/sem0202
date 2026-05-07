@@ -205,7 +205,6 @@ openBtns.forEach((btn) => {
 btn.addEventListener("click", (e) => {
   e.preventDefault();
   activeTrigger = btn;
-  console.log("der blev klikket");
   visPopup(startScenarie);
 });
 
