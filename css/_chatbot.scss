@@ -17,6 +17,7 @@
   max-width: 400px;
   max-height: 80vh;
   overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
 .chatbot.open {
@@ -34,6 +35,7 @@ button {
   border-radius: 25px;
   padding: 10px 20px;
   text-align: left;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
 }
 
 .luk-btn {
@@ -56,6 +58,7 @@ button {
 .dialog-extra,
 .tip {
   white-space: pre-line;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
 }
 
 .dialog {
