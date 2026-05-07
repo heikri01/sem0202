@@ -14,6 +14,9 @@
   padding: 2rem;
   border-radius: 25px;
   border: 1px solid variables.$primary-color;
+  max-width: 400px;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .chatbot.open {
@@ -49,13 +52,18 @@ button {
     align-items: flex-start;
 }
 
+.dialog,
+.dialog-extra,
+.tip {
+  white-space: pre-line;
+}
+
 .dialog {
     background: variables.$secondary-color;
     border: 2px solid variables.$primary-color;
     border-radius: 25px 25px 0 25px;
     padding: 20px;
     margin-right: 65px;
-    white-space: pre-line;
 }
 
 .dialog-extra {
@@ -108,4 +116,39 @@ button {
     margin-left: auto;
     margin-top: 1rem;
     display: block;
+}
+
+.feedback-dialog {
+    border-radius: 25px;
+    margin-right: 20px;
+}
+
+.danger {
+    background: variables.$color-bad;
+}
+
+.succes {
+    background: variables.$color-good;
+}
+
+.neutral {
+    background: variables.$color-neutral;
+}
+
+.feedback-ikon {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.feedback-wrap {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.tip {
+    border: 2px solid variables.$primary-color;
+    background: variables.$secondary-color;
+    border-radius: 25px;
+    padding: 20px;
 }

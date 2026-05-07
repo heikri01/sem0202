@@ -61,6 +61,9 @@
   padding: 2rem;
   border-radius: 25px;
   border: 1px solid #090142;
+  max-width: 400px;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .chatbot.open {
@@ -96,13 +99,18 @@ button {
   align-items: flex-start;
 }
 
+.dialog,
+.dialog-extra,
+.tip {
+  white-space: pre-line;
+}
+
 .dialog {
   background: #99B8D2;
   border: 2px solid #090142;
   border-radius: 25px 25px 0 25px;
   padding: 20px;
   margin-right: 65px;
-  white-space: pre-line;
 }
 
 .dialog-extra {
@@ -155,6 +163,41 @@ button {
   margin-left: auto;
   margin-top: 1rem;
   display: block;
+}
+
+.feedback-dialog {
+  border-radius: 25px;
+  margin-right: 20px;
+}
+
+.danger {
+  background: #F00000;
+}
+
+.succes {
+  background: #00DF00;
+}
+
+.neutral {
+  background: #E6C500;
+}
+
+.feedback-ikon {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.feedback-wrap {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.tip {
+  border: 2px solid #090142;
+  background: #99B8D2;
+  border-radius: 25px;
+  padding: 20px;
 }
 
 body {
@@ -243,6 +286,11 @@ button {
   background: #F15A24;
   color: white;
   cursor: pointer;
+  transition: 0.2s ease;
+}
+button:hover {
+  transform: translateY(-2px);
+  opacity: 0.8;
 }
 
 .hero {
@@ -325,5 +373,15 @@ footer {
     width: auto;
     padding: 0;
     gap: 1em;
+  }
+  .svar-btn {
+    transition: 0.2s ease;
+  }
+  .svar-btn:hover {
+    transform: translateY(-2px);
+    cursor: pointer;
+  }
+  .cta:hover {
+    opacity: 0.7;
   }
 }/*# sourceMappingURL=style.css.map */

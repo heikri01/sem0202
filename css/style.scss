@@ -159,7 +159,6 @@ footer {
 }
 
 
-
 @media screen and (min-width: 800px) {
     header {
         display: inline;
@@ -179,5 +178,18 @@ footer {
             padding: 0;
             gap: 1em;
         }
+    }
+
+    .svar-btn {
+        transition: 0.2s ease;
+    }
+
+    .svar-btn:hover {
+        transform: translateY(-2px);
+        cursor: pointer;
+    }
+
+    .cta:hover {
+        opacity: 0.7;
     }
 }

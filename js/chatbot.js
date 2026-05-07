@@ -53,6 +53,7 @@ function visPopup(scenarie) {
     p.classList.add("dialog"); //tilføjer klassen dialog til tekstfeltet
       if (scenarie.type === "feedback") {
         p.classList.add("feedback-dialog");
+        p.classList.add(scenarie.farve);
       }
 
   const ikon = document.createElement("div"); //opretter en div
@@ -88,6 +89,7 @@ function visPopup(scenarie) {
   let konsekvens;
   let cta;
   let tip;
+  let feedbackWrap; 
   //hvis scenariet er typen info
   if (scenarie.type === "info") {
       konsekvens = document.createElement("p");
@@ -109,10 +111,14 @@ function visPopup(scenarie) {
       else {
         cta.textContent = "Næste";
       }
-      cta.classList.add("cta");
-      tip = document.createElement("p");
-      tip.textContent = scenarie.tip;
-      tip.classList.add("tip");
+        cta.classList.add("cta");
+        tip = document.createElement("p");
+        tip.textContent = scenarie.tip;
+        tip.classList.add("tip");
+        feedbackWrap = document.createElement("div");
+        feedbackWrap.classList.add("feedback-wrap");
+        feedbackWrap.append(ikon);
+        feedbackWrap.append(tip);
   }
   //if funktionen for feedback slutter her
   //cta EventListener for både info og feedback
@@ -140,7 +146,9 @@ function visPopup(scenarie) {
   
   chatbot.append(topBar); //der tilføjes et topbar element til chatbot
   chatbot.append(p); //der tilføjes et tekstfelt element til chatbot
-  chatbot.append(ikon); //der tilføjes et ikon element til chatbot
+if (scenarie.type !== "feedback") {
+  chatbot.append(ikon);
+  } //der tilføjes et ikon element til chatbot
   //hvis der er et svar, så tilføjes der en svarContainer element til chatbot
   if (scenarie.svar) {
     chatbot.append(svarContainer);
@@ -148,8 +156,8 @@ function visPopup(scenarie) {
   if (konsekvens) {
     chatbot.append(konsekvens);  
   }
-  if (tip) {
-   chatbot.append(tip);
+  if (feedbackWrap) {
+    chatbot.append(feedbackWrap);
   }
   if (cta) {
     chatbot.append(cta);  
