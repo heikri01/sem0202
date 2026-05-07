@@ -1,6 +1,4 @@
 import { scenarier } from "./scenarier.js"; //henter listen med alle scenarier fra en anden js fil
-const main = document.querySelector("main"); //finder main elementet i html
-console.log(main);
 
 const openBtns = document.querySelectorAll(".open-chatbot");
 
@@ -28,6 +26,10 @@ function visPopup(scenarie) {
   const restartBtn = document.createElement("button"); //opretter en knap
     restartBtn.textContent = "Start forfra"; // - med teksten Start forfra
     restartBtn.classList.add("restart-btn"); // - med klassen restart-btn
+     //Lytter efter klik på start forfra-knappen
+    restartBtn.addEventListener("click", () => {
+      visPopup(startScenarie); 
+    })
 
    const lukBtn = document.createElement("button"); //opretter en knap
     lukBtn.textContent = "Luk"; // - med teksten Luk
@@ -49,10 +51,16 @@ function visPopup(scenarie) {
   const p = document.createElement("p"); //opretter tekstfeltet
     p.textContent = scenarie.tekst; //henter teksten ind fra scenarie listen i scenarier.js
     p.classList.add("dialog"); //tilføjer klassen dialog til tekstfeltet
+      if (scenarie.type === "feedback") {
+        p.classList.add("feedback-dialog");
+      }
 
   const ikon = document.createElement("div"); //opretter en div
     ikon.innerHTML = `<i class="${scenarie.ikon}"></i>`; // - med et ikon
     ikon.classList.add("bot-ikon"); // - og tilføjer klassen bot-ikon til div'en 
+      if (scenarie.type === "feedback") {
+        ikon.classList.add("feedback-ikon");
+      }
  
   //kun scenarier med svar får svar-knapper:
   let svarContainer; //variablen oprettes før if-blokken så den kan bruges senere i funktionen
@@ -77,9 +85,10 @@ function visPopup(scenarie) {
         svarContainer.append(svarBtn); //for hvert (forEach) svarmulighed der står tilføjes hver sin knap i svarContainer
   });
   } //if funktionen for svar slutter her
-  //hvis scenariet er typen info
   let konsekvens;
   let cta;
+  let tip;
+  //hvis scenariet er typen info
   if (scenarie.type === "info") {
       konsekvens = document.createElement("p");
       konsekvens.textContent = scenarie.konsekvens; //henter teksten ind fra scenarie listen i scenarier.js
@@ -88,12 +97,47 @@ function visPopup(scenarie) {
       cta.textContent = "Næste";
       cta.classList.add("cta");
   }
-    //if funktionen for feedback slutter her
-    if (scenarie.type === "feedback") {
-      const cta = document.createElement("button");
+    //if funktionen for feedback starter her
+  if (scenarie.type === "feedback") {
+      cta = document.createElement("button");
+      if (scenarie.cta === "restart") {
+        cta.textContent = "Start forfra";
+      }
+      else if (scenarie.cta === "close") {
+        cta.textContent = "Luk chat";
+      }
+      else {
+        cta.textContent = "Næste";
+      }
       cta.classList.add("cta");
+      tip = document.createElement("p");
+      tip.textContent = scenarie.tip;
+      tip.classList.add("tip");
   }
   //if funktionen for feedback slutter her
+  //cta EventListener for både info og feedback
+  if (cta) {
+      cta.addEventListener("click", () => {
+        if (scenarie.cta === "restart") {
+          visPopup(startScenarie);
+        }
+        else if (scenarie.cta === "close") {
+          chatbot.classList.remove("open");
+          overlay.classList.remove("open");
+          if (activeTrigger) {
+            activeTrigger.focus();
+          }
+        }
+        else {
+          const næsteScenarie = scenarier.find(
+            item => item.id === scenarie.cta
+          );
+          visPopup(næsteScenarie);
+        }
+      })
+  }
+  //EventListener cta sluttes her
+  
   chatbot.append(topBar); //der tilføjes et topbar element til chatbot
   chatbot.append(p); //der tilføjes et tekstfelt element til chatbot
   chatbot.append(ikon); //der tilføjes et ikon element til chatbot
@@ -101,15 +145,16 @@ function visPopup(scenarie) {
   if (scenarie.svar) {
     chatbot.append(svarContainer);
   }
-  if (scenarie.type === "info") {
+  if (konsekvens) {
     chatbot.append(konsekvens);  
   }
-  if (scenarie.type === "info") {
+  if (tip) {
+   chatbot.append(tip);
+  }
+  if (cta) {
     chatbot.append(cta);  
   }
-  if (scenarie.cta === "restart") {
-    
-  }
+
   //lokaliserer alle knapperne inde i chatbotten
   const focusable = chatbot.querySelectorAll("button"); //finder alle knapper inde i chatbotten
   firstElement = focusable[0]; //gemmer første ->
@@ -140,7 +185,6 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     chatbot.classList.remove("open");
     overlay.classList.remove("open");
-    activeTrigger.focus();
     if (activeTrigger) {
     activeTrigger.focus();
     }

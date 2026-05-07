@@ -133,14 +133,14 @@ export const scenarier = [
     tekst: `Du bliver sendt til en side, der ligner en studieplatform. \nDu uploader din opgave…`,
     ikon: "fa-solid fa-robot",
     konsekvens: `Kort efter modtager du en mail: \n"Din konto er blevet kompromitteret."`,
-    cta: `next`
+    cta: `clicked`
   },
  {
     id: "continue",
     type: "info",
     tekst: `Intet problem, jeg kan stadig hjælpe med din opgave`,
     ikon: "fa-solid fa-robot",
-    cta: `next`
+    cta: `ignore`
   }, 
   {
     id: "no-share",
@@ -164,7 +164,7 @@ export const scenarier = [
     tekst: `Du oploadede din opgave til en ukendt side. \nDin fil kan nu være blevet kopieret, misbrugt eller delt uden din tilladelse.`,
     ikon: "fa-solid fa-lightbulb",
     tip: `TIP: \nDel kun filer via officielle og sikre systemer fra dit studie.`,
-    cta: `next`
+    cta: `blind`
   }, 
   {
     id: "clicked",
@@ -172,7 +172,7 @@ export const scenarier = [
     tekst: `Du klikkede på et link fra en ukendt chatbot. Siden lignede en troværdig platform, men blev brugt til at indsamle dine data.`,
     ikon: "fa-solid fa-lightbulb",
     tip: `TIP: \nKlik aldrig på links fra ukendte afsendere - selv hvis de ser ægte ud.`,
-    cta: `next`
+    cta: `overshare`
   }, 
   {
     id: "ask-who",
