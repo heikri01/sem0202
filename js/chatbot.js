@@ -76,14 +76,39 @@ function visPopup(scenarie) {
     });
         svarContainer.append(svarBtn); //for hvert (forEach) svarmulighed der står tilføjes hver sin knap i svarContainer
   });
-
-   } //if funktionen for svar slutter her
+  } //if funktionen for svar slutter her
+  //hvis scenariet er typen info
+  let konsekvens;
+  let cta;
+  if (scenarie.type === "info") {
+      konsekvens = document.createElement("p");
+      konsekvens.textContent = scenarie.konsekvens; //henter teksten ind fra scenarie listen i scenarier.js
+      konsekvens.classList.add("dialog-extra");
+      cta = document.createElement("button");
+      cta.textContent = "Næste";
+      cta.classList.add("cta");
+  }
+    //if funktionen for feedback slutter her
+    if (scenarie.type === "feedback") {
+      const cta = document.createElement("button");
+      cta.classList.add("cta");
+  }
+  //if funktionen for feedback slutter her
   chatbot.append(topBar); //der tilføjes et topbar element til chatbot
   chatbot.append(p); //der tilføjes et tekstfelt element til chatbot
   chatbot.append(ikon); //der tilføjes et ikon element til chatbot
   //hvis der er et svar, så tilføjes der en svarContainer element til chatbot
   if (scenarie.svar) {
     chatbot.append(svarContainer);
+  }
+  if (scenarie.type === "info") {
+    chatbot.append(konsekvens);  
+  }
+  if (scenarie.type === "info") {
+    chatbot.append(cta);  
+  }
+  if (scenarie.cta === "restart") {
+    
   }
   //lokaliserer alle knapperne inde i chatbotten
   const focusable = chatbot.querySelectorAll("button"); //finder alle knapper inde i chatbotten

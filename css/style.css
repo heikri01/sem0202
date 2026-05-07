@@ -67,12 +67,17 @@
   display: block;
 }
 
+button {
+  font-family: inter;
+}
+
 .svar-btn {
   background: #D9E6F0;
   border: 2px solid rgba(9, 1, 66, 0.4);
   color: #090142;
   border-radius: 25px;
   padding: 10px 20px;
+  text-align: left;
 }
 
 .luk-btn {
@@ -95,6 +100,15 @@
   background: #99B8D2;
   border: 2px solid #090142;
   border-radius: 25px 25px 0 25px;
+  padding: 20px;
+  margin-right: 65px;
+  white-space: pre-line;
+}
+
+.dialog-extra {
+  background: #99B8D2;
+  border: 2px solid #090142;
+  border-radius: 25px 0 25px 25px;
   padding: 20px;
   margin-right: 65px;
   white-space: pre-line;
@@ -131,6 +145,15 @@
 }
 
 .overlay.open {
+  display: block;
+}
+
+.cta {
+  background: none;
+  color: #090142;
+  border: none;
+  margin-left: auto;
+  margin-top: 1rem;
   display: block;
 }
 
